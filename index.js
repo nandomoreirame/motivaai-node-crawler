@@ -1,10 +1,12 @@
 'use strict'
 
+const fs = require('fs')
 const rp = require('request-promise')
 const $ = require('cheerio')
 
+const pagination = process.env.PAG || 1
 const baseUrl = 'https://www.pensador.com'
-const path = '/frases_de_motivacao/6/'
+const path = `/frases_de_motivacao/${pagination}/`
 
 const _parse = url =>
   rp(url)
@@ -16,7 +18,6 @@ const _parse = url =>
           quote, author
         }
       }
-      return false
     })
     .catch(err => console.error(err))
 
@@ -31,5 +32,13 @@ rp(`${baseUrl}${path}`)
     }
     return Promise.all(pages.map(url => _parse(`${baseUrl}${url}`)))
   })
-  .then(phrases => console.log(JSON.stringify(phrases)))
+  .then(phrases => {
+    const file = 'phrases.js'
+    const content = `\nconst PAG${pagination} = ${JSON.stringify(phrases)}`
+
+    fs.appendFile(file, content, err => {
+      if (err) throw err
+      console.log(`the ${file} file has been updated!`)
+    })
+  })
   .catch(err => console.error(err))
