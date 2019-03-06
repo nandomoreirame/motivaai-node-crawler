@@ -1,13 +1,23 @@
 {
-  "name": "html-to-text",
+  "name": "pensador-web-crawler",
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
+    "build": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Fernando Moreira <nandomoreira.me@gmail.com> (https://nandomoreira.me)",
   "license": "MIT",
+  "description": "> Web crawler feito em Nodejs para pegar frases do site ~> https://pensador.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandomoreirame/pensador-web-crawler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nandomoreirame/pensador-web-crawler/issues"
+  },
+  "homepage": "https://github.com/nandomoreirame/pensador-web-crawler#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
     "request": "^2.88.0",
