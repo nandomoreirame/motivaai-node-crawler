@@ -1,3 +1,3 @@
-# motivaai-node-crawler
+# Pensador Web Wrawler
 
-> Web crawler for MotivaAi app https://github.com/nandomoreirame/motivaai
+> Web crawler feito em Nodejs para pegar frases do site ~> https://pensador.com
